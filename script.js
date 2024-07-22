@@ -102,12 +102,28 @@ const data = [
     },
   },
 ];
-const body = document.querySelector("body");
 const container = document.querySelector("#container");
-
 function display(period) {
-  data.map(function (v) {
-    console.log(v.timeframes[period].current);
+  container.innerHTML = ` <div id="user">
+        <div id="user-info">
+          <img src="./images/image-jeremy.png" alt="user" />
+          <p>Report for</p>
+          <h1>Jeremy Robson</h1>
+        </div>
+
+        <ul id="filters">
+          <li>
+            <a href="#">Daily</a>
+          </li>
+          <li>
+            <a href="#">Weekly</a>
+          </li>
+          <li>
+            <a href="#">Monthly</a>
+          </li>
+        </ul>
+      </div>`;
+  data.forEach(function (v) {
     container.innerHTML += `<div class="activity">
               <div>
                 <span>${v.title}</span>
@@ -119,5 +135,6 @@ function display(period) {
   });
 }
 display("monthly");
-
+display("weekly");
+display("daily");
 const li = document.querySelectorAll("li");
