@@ -113,13 +113,13 @@ function display(period) {
 
         <ul id="filters">
           <li>
-            <a href="#">Daily</a>
+            <a href="#" data-time="daily">Daily</a>
           </li>
           <li>
-            <a href="#">Weekly</a>
+            <a href="#" data-time="weekly">Weekly</a>
           </li>
           <li>
-            <a href="#">Monthly</a>
+            <a href="#" data-time="monthly">Monthly</a>
           </li>
         </ul>
       </div>`;
@@ -133,8 +133,13 @@ function display(period) {
               <p>Yesterday - ${v.timeframes[period].previous}hrs</p>
             </div>`;
   });
+  const li = document.querySelectorAll("li");
+  li.forEach(function (v, i) {
+    v.addEventListener("click", function (e) {
+      console.log(e.target.getAttribute("data-time"));
+      display(e.target.getAttribute("data-time"));
+    });
+  });
 }
-display("monthly");
-display("weekly");
+
 display("daily");
-const li = document.querySelectorAll("li");
